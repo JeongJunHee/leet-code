@@ -4,7 +4,7 @@
  * @return {string}
  */
 var convert = function (s, numRows) {
-  let signed = true;
+  let isNegative = false;
   let index = 0;
   let result = Array.from(new Array(numRows), () => "");
 
@@ -15,12 +15,12 @@ var convert = function (s, numRows) {
   for (let i = 0; i < s.length; i++) {
     result[index] += s[i];
 
-    signed ? index++ : index--;
+    isNegative ? index-- : index++;
 
     if (index === numRows - 1) {
-      signed = false;
+      isNegative = true;
     } else if (index === 0) {
-      signed = true;
+      isNegative = false;
     }
   }
 
